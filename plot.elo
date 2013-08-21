@@ -20,6 +20,7 @@ plot.elo <- function(x, y, ids="all", interpolate="yes", ...) {
   }else{
     ids=ids
   }
+  
   plot(1:length(res$truedates),1:length(res$truedates),ylim=range(plotdata, na.rm=T), ylab="ELO ratings", xlab="days")
   for (i in 1:length(ids)){
     colo=rainbow(length(ids))
