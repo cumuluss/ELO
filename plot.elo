@@ -1,0 +1,29 @@
+# plot.elo
+# function with three parameters
+# res= output of eloSeq,
+# ids="all" all is the default or you can provide a list of ID names,
+# interpolate="yes" with default "yes" than it plot cmat or "no" than it plot lmat
+
+
+#########################################################################################
+# PLOT FUNCTION
+#plot.elo <- function(res, ids="all", interpolate="yes"){
+plot.elo <- function(x, y, ids="all", interpolate="yes", ...) {
+  res <- x
+  if(interpolate=="yes"){
+    plotdata=res$cmat
+  }else{
+    plotdata=res$lmat
+  }
+  if(mean(ids=="all")==1){
+    ids=res$allids
+  }else{
+    ids=ids
+  }
+  plot(1:length(res$truedates),1:length(res$truedates),ylim=range(plotdata, na.rm=T), ylab="ELO ratings", xlab="days")
+  for (i in 1:length(ids)){
+    colo=rainbow(length(ids))
+    lines(plotdata[,ids[i]], pch=20, lty=3, type="l", col=colo[i])
+    points(plotdata[,ids[i]], pch=20, cex=0.75, col=colo[i])
+  }
+}
