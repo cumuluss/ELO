@@ -1,0 +1,2 @@
+elo.seq <-
+  function(x, ..., presence=NULL, startvalue=1000, k=100, init="average", iterate=0, runcheck=TRUE) UseMethod("elo.seq")
